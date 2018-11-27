@@ -1,7 +1,6 @@
 import requests
 import json
 from urllib.request import urlopen
-import getpass
 from selenium import webdriver
 import time
 
