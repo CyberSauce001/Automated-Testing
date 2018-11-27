@@ -24,22 +24,37 @@ def menu():
 def firefox():
     driver1 = webdriver.Firefox(executable_path= gecko)
     driver1.get('http://google.com')
+    driver1.maximize_window()
     print('Worked')
     #driver1.quit()
 
 def chrome():
-    driver = webdriver.Chrome(cdrive)
-    driver.get('[insert url');
-    driver.maximize_window()
+    url = '[insert url]'
+    #Open Chrome
+    driver2 = webdriver.Chrome(cdrive)
+    driver2.get(url)
+    driver2.maximize_window()
     time.sleep(10)
-    signin = driver.find_element_by_xpath('//div[@class="header-item lonely"]//a[@class="menu-link"]').click()
+
+    #Home Page -  First CheckPoint
+    check = driver2.find_element_by_xpath('//h1[contains(text(), "[text]")]')
+    check2 = driver2.find_element_by_xpath('//h5[contains(text(), "[text]")]')
+    check3 = driver2.find_element_by_xpath('//h5[contains(text(), "[text]")]')
+    check4 = driver2.find_element_by_xpath('//h5[contains(text(), "[text]")]')
+    if check and check2 and check3 and check4:
+        print('CheckPoint #1: Passed!')
+    else:
+        print('CheckPoint #1: Error!')
+    ###########################################
+    time.sleep(10)
+    signin = driver2.find_element_by_xpath('//div[@class="header-item lonely"]//a[@class="menu-link"]').click()
     time.sleep(3)
-    user = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input"]').send_keys('[username]')
+    user = driver2.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input"]').send_keys('[username]')
     time.sleep(3)
-    psw = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input disabledAutoFillPassword"]').send_keys('[password]')
-    enter = driver.find_element_by_xpath('//div[@class="form__box"]//button[@type="submit"]').click()
-    time.sleep(3)
-    #driver.quit()
+    psw = driver2.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input disabledAutoFillPassword"]').send_keys('[password]')
+    enter = driver2.find_element_by_xpath('//div[@class="form__box"]//button[@type="submit"]').click()
+    time.sleep(10)
+    #driver2.quit()
 
 def explorer():
     print('Unavailable')
