@@ -13,11 +13,11 @@ time.sleep(3)
 
 #pop up login
 #search login username
-user = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input"]').send_keys('alex.n') 
+user = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input"]').send_keys('[username]') 
 time.sleep(3)
 
 #search login password
-psw = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input disabledAutoFillPassword"]').send_keys('123456')
+psw = driver.find_element_by_xpath('//div[@class="form__box"]//input[@class="form__input disabledAutoFillPassword"]').send_keys('[password]')
 
 #submit input, some website does not use submit which is ( psw.submit() or .submit() can be attach to the end of psw = '')
 #if website use click use the formula below    [variable] = driver.find[whatever it is]('').click()
