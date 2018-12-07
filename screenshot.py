@@ -7,7 +7,7 @@ import time
 pjs = '/path/phantomjs.exe'
 
 
-class ScreenAnalysis():
+class Screenshot():
 
   #this is hard coded, can use input str() in order to get url
     print('Choose the following:')
@@ -85,7 +85,5 @@ class ScreenAnalysis():
         return region_total/factor
 
 
-
-
-ScreenAnalysis()
+Screenshot()
 
