@@ -9,7 +9,7 @@ log = open('LogFile/Scorm_Log.txt', 'w')
 error = open('LogFile/Scorm_Error.txt', 'w')
 
 api_url = ''
-acc_id = 'c6b03804-b5e6-46bb-99a1-d8ef4bb257ac'
+acc_id = ''
 scorm_cloud = ''
 pwd = ''
 def get_auth_token():
