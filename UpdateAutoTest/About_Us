@@ -1,0 +1,76 @@
+from selenium import webdriver
+import time, traceback, os
+
+error = open('AboutUs_Error.txt', 'w')
+log = open('AboutUs_Log.txt', 'w')
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('window-size=1200,1000')
+cdrive = 'chromedriver'
+url = ''
+driver = webdriver.Chrome(cdrive, options=options)
+driver.get(url)
+driver.maximize_window()
+time.sleep(5)
+
+var = True
+try:
+    About_us = driver.find_element_by_xpath('//*[@id="usermenu"]/div[1]/div[2]/span[1]/a[4]').click()
+    time.sleep(3)
+    check = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[1]/h1').text
+    if check == 'About KnowledgeCity':
+        check2 = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[1]/p').text
+        if check2 == 'Our Team Wants to See YOU Succeed!':
+            var = True
+        else:
+            var = False
+            print('Checkpoint #1: ', var)
+    time.sleep(1)
+    intro = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[2]/div[1]/h2').text
+    if intro == 'Introduction to KnowledgeCity':
+        intro_para = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[2]/div[1]/p[1]').text
+        if intro_para == 'KnowledgeCity specializes in learning solutions that maximize skill development and ' \
+                         'minimize the cost, time, and headaches associated with implementing eLearning training' \
+                         ' programs.':
+            var = True
+        else:
+            var = False
+            print('Checkpoint #2: ', var)
+    time.sleep(1)
+    video = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[2]/div[2]/a').click()
+    time.sleep(10)
+    refresh = driver.execute_script('location.reload()')
+    time.sleep(5)
+    second_header = driver.find_element_by_xpath('//*[@id="content"]/div[2]/div/h2').text
+    if second_header == 'Our Mission':
+        second_para = driver.find_element_by_xpath('//*[@id="content"]/div[2]/div/div/p').text
+        if second_para == 'Our mission has always been to make quality skills training accessible to everyone.' \
+                          ' We continue in that tradition by creating tools designed to facilitate learning and the ' \
+                          'achievement of success. Together, we are creating more productive and safe workplaces, more ' \
+                          'knowledgeable and engaged employees, and enriching the culture of organizations around ' \
+                          'the globe.':
+            var = True
+        else:
+            var = False
+            print('Checkpoint #3: ', var)
+    time.sleep(3)
+    TLL = driver.find_element_by_xpath('//*[@id="content"]/section[1]/div/div/div[1]/p/a').click()
+    time.sleep(5)
+    driver.execute_script("window.history.go(-1)")
+    time.sleep(5)
+    LMS = driver.find_element_by_xpath('//*[@id="content"]/section[1]/div/div/div[2]/p/a').click()
+    time.sleep(5)
+    driver.execute_script("window.history.go(-1)")
+    time.sleep(5)
+    CCC = driver.find_element_by_xpath('//*[@id="content"]/section[1]/div/div/div[3]/p/a').click()
+    driver.execute_script("window.history.go(-1)")
+except Exception:
+    print('About Us Page has Errors', file =log)
+    traceback.print_exc(file=error)
+log.close()
+error.close()
+if os.stat('LogFile/AboutUs_Log.txt').st_size == 0:
+    os.remove('LogFile/AboutUs_Log.txt')
+    os.remove('LogFile/AboutUs_Error.txt')
+driver.quit()
