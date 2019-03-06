@@ -19,7 +19,7 @@ try:
     About_us = driver.find_element_by_xpath('//*[@id="usermenu"]/div[1]/div[2]/span[1]/a[4]').click()
     time.sleep(3)
     check = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[1]/h1').text
-    if check == 'About KnowledgeCity':
+    if check == '':
         check2 = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[1]/p').text
         if check2 == 'Our Team Wants to See YOU Succeed!':
             var = True
@@ -28,11 +28,9 @@ try:
             print('Checkpoint #1: ', var)
     time.sleep(1)
     intro = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[2]/div[1]/h2').text
-    if intro == 'Introduction to KnowledgeCity':
+    if intro == '':
         intro_para = driver.find_element_by_xpath('//*[@id="content"]/div[1]/div/div[2]/div[1]/p[1]').text
-        if intro_para == 'KnowledgeCity specializes in learning solutions that maximize skill development and ' \
-                         'minimize the cost, time, and headaches associated with implementing eLearning training' \
-                         ' programs.':
+        if intro_para == '':
             var = True
         else:
             var = False
