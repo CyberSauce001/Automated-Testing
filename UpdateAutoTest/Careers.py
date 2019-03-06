@@ -11,7 +11,7 @@ try:
     options.add_argument('--headless')
     options.add_argument('window-size=1200,1000')
     cdrive = '/chromedriver'
-    url = 'https://www.knowledgecity.com/'
+    url = ''
     driver = webdriver.Chrome(cdrive, options=options)
     driver.get(url)
     driver.maximize_window()
